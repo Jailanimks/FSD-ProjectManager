@@ -1,0 +1,20 @@
+https://github.com/Jailanimks/FSD-TaskManagerUI.git
+
+
+  git config --global user.email "Jailanimks@gmail.com"
+  git config --global user.name "Jailanimks"
+
+git remote add origin https://github.com/Jailanimks/FSD-TaskManagerUI.git
+git push -u origin master
+git push origin HEAD --force
+
+git clone https://github.com/Jailanimks/FSD-TaskManagerUI.git
+git remote -v
+
+git config --lobal credential.helper wincred
+
+
+error: failed to push some refs to 'https://github.com/Jailanimks/FSD-TaskManagerUI.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.

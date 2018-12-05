@@ -1,0 +1,9 @@
+https://medium.com/@mail.bahurudeen/simple-crud-functionality-using-angular-5-with-bootstrap-4-f7baac0d2000
+
+http://www.advancesharp.com/blog/1215/angular-2-crud-with-web-api-2
+
+https://github.com/AliAdravi/Angular2-CRUD-with-WebAPI/blob/master/src/app/services/customer.service.ts
+
+https://www.devglan.com/angular/angular-6-example
+
+http://www.advancesharp.com/blog/1185/angularjs-crud-with-web-api-entity-framework-bootstrap-modal-popup-part-1
