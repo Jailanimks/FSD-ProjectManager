@@ -93,6 +93,8 @@ namespace ProjectManager.API.Controllers
                             CompTask = g.Count(p => p.Status == true)
                         };
 
+
+
                  retResult = Ok(prjTask);
             }
             catch (ApplicationException ex)
