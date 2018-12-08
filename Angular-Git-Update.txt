@@ -5,6 +5,7 @@ https://github.com/Jailanimks/FSD-TaskManagerUI.git
   git config --global user.name "Jailanimks"
 
 git remote add origin https://github.com/Jailanimks/FSD-TaskManagerUI.git
+git remote add origin https://github.com/Jailanimks/ProjectManagerUI.git
 git push -u origin master
 git push origin HEAD --force
 
