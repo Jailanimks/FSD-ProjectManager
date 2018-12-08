@@ -13,16 +13,17 @@ namespace ProjectManager.Tests
     {
         #region Variables
         private Counter _counter;
+        private int key;
 
-        private IUserRepository userRepository;
-        private List<Users> randomUsers;
+        private IUserRepository userRepository = new UserRepository();
+        private List<Users> randomUsers = new List<Users>();
 
-        private IProjectRepository projectRepository;
-        private List<Projects> randomProjects;
+        private IProjectRepository projectRepository = new ProjectRepository();
+        private List<Projects> randomProjects = new List<Projects>();
 
 
-        private IParentTaskRepository parentRepository;
-        private List<ParentTasks> randomParents;
+        private IParentTaskRepository parentRepository =  new ParentTaskRepository();
+        private List<ParentTasks> randomParents = new List<ParentTasks>();
 
         private ITaskRepository taskRepository = new TaskRepository();
         private List<TaskData> randomTasks = new List<TaskData>();
@@ -37,6 +38,7 @@ namespace ProjectManager.Tests
             randomProjects = SetupProjects();
             randomParents = SetupParent();
             randomTasks = SetupTasks();
+            key = 0;
         
         }
 
@@ -66,7 +68,7 @@ namespace ProjectManager.Tests
         #endregion
 
 
-        [PerfBenchmark(Description = "Test to ensure get all Users.", NumberOfIterations = 5, RunMode = RunMode.Throughput,
+        [PerfBenchmark(Description = "Test to ensure get all Users.", NumberOfIterations = 3, RunMode = RunMode.Throughput,
         RunTimeMilliseconds = 100, TestMode = TestMode.Test)]
         [CounterThroughputAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
         [CounterTotalAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
@@ -82,7 +84,7 @@ namespace ProjectManager.Tests
 
         }
 
-        [PerfBenchmark(Description = "Test to ensure Add a User.", NumberOfIterations = 5, RunMode = RunMode.Throughput,
+        [PerfBenchmark(Description = "Test to ensure Add a User.", NumberOfIterations = 3, RunMode = RunMode.Throughput,
         RunTimeMilliseconds = 100, TestMode = TestMode.Test)]
         [CounterThroughputAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
         [CounterTotalAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
@@ -104,7 +106,7 @@ namespace ProjectManager.Tests
         }
 
 
-        [PerfBenchmark(Description = "Test to ensure Update a User.", NumberOfIterations = 5, RunMode = RunMode.Throughput,
+        [PerfBenchmark(Description = "Test to ensure Update a User.", NumberOfIterations = 3, RunMode = RunMode.Throughput,
         RunTimeMilliseconds = 100, TestMode = TestMode.Test)]
         [CounterThroughputAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
         [CounterTotalAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
@@ -127,7 +129,7 @@ namespace ProjectManager.Tests
 
 
 
-        [PerfBenchmark(Description = "Test to ensure to delete a User.", NumberOfIterations = 5, RunMode = RunMode.Throughput,
+        [PerfBenchmark(Description = "Test to ensure to delete a User.", NumberOfIterations = 3, RunMode = RunMode.Throughput,
          RunTimeMilliseconds = 100, TestMode = TestMode.Test)]
         [CounterThroughputAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
         [CounterTotalAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
@@ -143,7 +145,7 @@ namespace ProjectManager.Tests
         }
 
 
-        [PerfBenchmark(Description = "Test to ensure to Retrive a User by UserID.", NumberOfIterations = 5, RunMode = RunMode.Throughput,
+        [PerfBenchmark(Description = "Test to ensure to Retrive a User by UserID.", NumberOfIterations = 3, RunMode = RunMode.Throughput,
         RunTimeMilliseconds = 100, TestMode = TestMode.Test)]
         [CounterThroughputAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
         [CounterTotalAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
@@ -163,7 +165,7 @@ namespace ProjectManager.Tests
 
 
 
-        [PerfBenchmark(Description = "Test to ensure get all Projects.", NumberOfIterations = 5, RunMode = RunMode.Throughput,
+        [PerfBenchmark(Description = "Test to ensure get all Projects.", NumberOfIterations = 3, RunMode = RunMode.Throughput,
         RunTimeMilliseconds = 100, TestMode = TestMode.Test)]
         [CounterThroughputAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
         [CounterTotalAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
@@ -179,7 +181,7 @@ namespace ProjectManager.Tests
 
         }
 
-        [PerfBenchmark(Description = "Test to ensure Add a Project.", NumberOfIterations = 5, RunMode = RunMode.Throughput,
+        [PerfBenchmark(Description = "Test to ensure Add a Project.", NumberOfIterations = 3, RunMode = RunMode.Throughput,
         RunTimeMilliseconds = 100, TestMode = TestMode.Test)]
         [CounterThroughputAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
         [CounterTotalAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
@@ -203,7 +205,7 @@ namespace ProjectManager.Tests
         }
 
 
-        [PerfBenchmark(Description = "Test to ensure Update a Project.", NumberOfIterations = 5, RunMode = RunMode.Throughput,
+        [PerfBenchmark(Description = "Test to ensure Update a Project.", NumberOfIterations = 3, RunMode = RunMode.Throughput,
         RunTimeMilliseconds = 100, TestMode = TestMode.Test)]
         [CounterThroughputAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
         [CounterTotalAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
@@ -229,7 +231,7 @@ namespace ProjectManager.Tests
 
 
      
-        [PerfBenchmark(Description = "Test to ensure to Retrive a Project by ProjectID.", NumberOfIterations = 5, RunMode = RunMode.Throughput,
+        [PerfBenchmark(Description = "Test to ensure to Retrive a Project by ProjectID.", NumberOfIterations = 3, RunMode = RunMode.Throughput,
         RunTimeMilliseconds = 100, TestMode = TestMode.Test)]
         [CounterThroughputAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
         [CounterTotalAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
@@ -250,7 +252,7 @@ namespace ProjectManager.Tests
 
 
 
-        [PerfBenchmark(Description = "Test to ensure get all ParentTasks.", NumberOfIterations = 5, RunMode = RunMode.Throughput,
+        [PerfBenchmark(Description = "Test to ensure get all ParentTasks.", NumberOfIterations = 3, RunMode = RunMode.Throughput,
         RunTimeMilliseconds = 100, TestMode = TestMode.Test)]
         [CounterThroughputAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
         [CounterTotalAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
@@ -267,7 +269,7 @@ namespace ProjectManager.Tests
         }
 
 
-        [PerfBenchmark(Description = "Test to ensure Add a ParentTask.", NumberOfIterations = 5, RunMode = RunMode.Throughput,
+        [PerfBenchmark(Description = "Test to ensure Add a ParentTask.", NumberOfIterations = 3, RunMode = RunMode.Throughput,
         RunTimeMilliseconds = 100, TestMode = TestMode.Test)]
         [CounterThroughputAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
         [CounterTotalAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
@@ -288,7 +290,7 @@ namespace ProjectManager.Tests
         }
 
 
-        [PerfBenchmark(Description = "Test to ensure Update a ParentTask.", NumberOfIterations = 5, RunMode = RunMode.Throughput,
+        [PerfBenchmark(Description = "Test to ensure Update a ParentTask.", NumberOfIterations = 3, RunMode = RunMode.Throughput,
         RunTimeMilliseconds = 100, TestMode = TestMode.Test)]
         [CounterThroughputAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
         [CounterTotalAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
@@ -312,7 +314,7 @@ namespace ProjectManager.Tests
 
 
 
-        [PerfBenchmark(Description = "Test to ensure to Retrive a ParentTask by TaskID.", NumberOfIterations = 5, RunMode = RunMode.Throughput,
+        [PerfBenchmark(Description = "Test to ensure to Retrive a ParentTask by TaskID.", NumberOfIterations = 3, RunMode = RunMode.Throughput,
         RunTimeMilliseconds = 100, TestMode = TestMode.Test)]
         [CounterThroughputAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
         [CounterTotalAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
@@ -334,7 +336,7 @@ namespace ProjectManager.Tests
 
 
 
-        [PerfBenchmark(Description = "Test to ensure get all Tasks.",NumberOfIterations = 5, RunMode = RunMode.Throughput,
+        [PerfBenchmark(Description = "Test to ensure get all Tasks.",NumberOfIterations = 3, RunMode = RunMode.Throughput,
         RunTimeMilliseconds = 100, TestMode = TestMode.Test)]
         [CounterThroughputAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
         [CounterTotalAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
@@ -351,7 +353,7 @@ namespace ProjectManager.Tests
         }
 
         
-        [PerfBenchmark(Description = "Test to ensure Add a Task.", NumberOfIterations = 5, RunMode = RunMode.Throughput,
+        [PerfBenchmark(Description = "Test to ensure Add a Task.", NumberOfIterations = 3, RunMode = RunMode.Throughput,
         RunTimeMilliseconds = 100, TestMode = TestMode.Test)]
         [CounterThroughputAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
         [CounterTotalAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
@@ -375,7 +377,7 @@ namespace ProjectManager.Tests
 
 
 
-        [PerfBenchmark(Description = "Test to ensure Update a Task.", NumberOfIterations = 5, RunMode = RunMode.Throughput,
+        [PerfBenchmark(Description = "Test to ensure Update a Task.", NumberOfIterations = 3, RunMode = RunMode.Throughput,
         RunTimeMilliseconds = 100, TestMode = TestMode.Test)]
         [CounterThroughputAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
         [CounterTotalAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
@@ -398,7 +400,7 @@ namespace ProjectManager.Tests
             _counter.Increment();
         }
 
-        [PerfBenchmark(Description = "Test to ensure to delete a Task.", NumberOfIterations = 5, RunMode = RunMode.Throughput,
+        [PerfBenchmark(Description = "Test to ensure to delete a Task.", NumberOfIterations = 3, RunMode = RunMode.Throughput,
         RunTimeMilliseconds = 100, TestMode = TestMode.Test)]
         [CounterThroughputAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
         [CounterTotalAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
@@ -413,7 +415,7 @@ namespace ProjectManager.Tests
             _counter.Increment();
         }
 
-        [PerfBenchmark(Description = "Test to ensure to get a Task by TaskID.", NumberOfIterations = 5, RunMode = RunMode.Throughput,
+        [PerfBenchmark(Description = "Test to ensure to get a Task by TaskID.", NumberOfIterations = 3, RunMode = RunMode.Throughput,
         RunTimeMilliseconds = 100, TestMode = TestMode.Test)]
         [CounterThroughputAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
         [CounterTotalAssertion("ProjectCounter", MustBe.LessThanOrEqualTo, 20000000.0d)]
